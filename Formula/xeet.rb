@@ -1,8 +1,8 @@
 class Xeet < Formula
   desc "Terminal interface for browsing and posting to X.com"
   homepage "https://github.com/melqtx/xeet"
-  url "https://github.com/melqtx/xeet/archive/refs/tags/v0.1.11.tar.gz"
-  sha256 "921f856d19cbff87529bb72d7d98a4aa7a4f237531afa9d2a9158cef10111d95"
+  url "https://github.com/melqtx/xeet/archive/refs/tags/v0.1.12.tar.gz"
+  sha256 "acdab9bf4993f480c68bd963aec037382259270c4121d3a6d6e2e00086db23cd"
   license "MIT"
   head "https://github.com/melqtx/xeet.git", branch: "main"
 
