@@ -1,0 +1,35 @@
+name: tork
+
+on:
+  pull_request:
+    paths:
+      - Formula/tork.rb
+      - .github/workflows/tork.yml
+  push:
+    branches: [main]
+    paths:
+      - Formula/tork.rb
+      - .github/workflows/tork.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    runs-on: macos-latest
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+      HOMEBREW_NO_INSTALL_CLEANUP: "1"
+      CC: /usr/bin/clang
+      CXX: /usr/bin/clang++
+    steps:
+      - uses: actions/checkout@v7
+      - name: Tap checkout
+        run: brew tap --custom-remote melqtx/tap "$GITHUB_WORKSPACE"
+      - name: Install from source
+        run: brew install --build-from-source melqtx/tap/tork
+      - name: Test formula
+        run: brew test --verbose melqtx/tap/tork
+      - name: Check version
+        run: tork --version
